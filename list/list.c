@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<list.h>
+#include"list.h"
 List* createList(){
     List *l = malloc(sizeof(List));
     if (l == NULL) return NULL;
@@ -17,18 +17,18 @@ void add(List *l, int item){
     l->size++;
 }
 int removeItem(List *l, int item){
-    if (isEmpty(l)) return 0;
+    if (isEmpty(l)) return 1;
     Node *current = l->begin;
     Node *past = NULL;
     while(current != NULL && current->dado != item){
         past = current;
         current = (Node*) current->next;
     }
-    if (current == NULL) return 0;
+    if (current == NULL) return 1;
     if (past == NULL) l->begin = (Node*)current->next;
     else past->next = current->next;
     free(current);
-    return 1;
+    return 0;
 }
 int isEmpty(List *l){
     if (l == NULL) return 1;
