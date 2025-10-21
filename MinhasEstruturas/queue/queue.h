@@ -10,7 +10,7 @@ typedef struct Queue{
     int size;
 } Queue;
 Queue *createQueue();
-void enQueue(Queue *q, char *string);
+void enQueue(Queue *q, char* string);
 char *deQueue(Queue *q);
 int isEmpty(Queue *q);
 char* front(Queue *q);

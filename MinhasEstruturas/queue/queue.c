@@ -13,10 +13,11 @@ Queue *createQueue(){
 int isEmpty(Queue *q){
     return (q->front == NULL);
 }
-void enQueue(Queue *q, char *string){
+void enQueue(Queue *q, char* string){
     if (q == NULL) return;
     Node *new = malloc(sizeof(Node));
-    strcpy(string, new->name);
+    new->name = (char*)malloc(100*sizeof(char));    
+    strcpy(new->name, string);
     new->next = NULL;
     if (isEmpty(q)){
         q->front = q->rear = new;
@@ -25,23 +26,29 @@ void enQueue(Queue *q, char *string){
         q->rear = new;
     }
     q->size++;
-    printf("O(A) %s entrou fila.\n", string);
+    printf("O(A) %s entrou fila.\n", string);   
 }
 char* deQueue(Queue *q){
+    char* nome = (char*)malloc(100 * sizeof(char));
     if (isEmpty(q)){
-        return "A fila está vazia.\n";
+        strcpy(nome, "A fila está vazia.\n");
+        return nome;
     }
     Node* temp = q->front;
-    char *nome = temp->name;
+    strcpy(nome, temp->name);
     q->front = (Node*) q->front->next;
     if (isEmpty(q)){
         q->rear = NULL;
     }
+    q->size--;
+    free(temp->name);
     free(temp);
     return nome;
 }
 char* front(Queue *q){
-    return q->front->name;
+    char* nome = (char*)malloc(100*sizeof(char));
+    strcpy(nome, q->front->name);
+    return nome;
 }
 int size(Queue *q){
     return q->size;
