@@ -1,14 +1,20 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
 #ifndef STACK_H
 #define STACK_H
-typedef struct {
+typedef struct Node{
+    struct Node* next;
     int element;
-    struct Node *next;
 } Node;
 typedef struct{
-    Node *top;
+    Node* top;
     int size;
 } Stack;
-Stack* creatStack();
-int push(Stack *s, int item);
-int pop(Stack *s)
+Stack* createStack();
+void push(Stack* s, int item);
+void pop(Stack* s);
+int peek(Stack* s);
+bool isEmpty(Stack* s);
+int size(Stack* s);
 #endif
