@@ -25,7 +25,7 @@ void weight(Candidatos* arr, int x){
     for(int i = 0; i < x-1; i++){
         for (int j = i+1; j < x; j++){
             if(arr[i].alt == arr[j].alt){
-                if (arr[i].pes > arr[j].pes){
+                if (arr[i].pes > arr[j].pes && arr[i].pes != 75 && arr[j].pes != 75){
                     Candidatos aux = arr[i];
                     arr[i] = arr[j];
                     arr[j] = aux;
@@ -72,30 +72,24 @@ void name(Candidatos* arr, int x){
 int main(){
     int n;
     Candidatos arr[100];
-
     scanf("%d", &n);
-
     for (int i = 0; i < n; i++){
         char nome[51];
         char sobrenome[51];
         int altura, peso;
-
         scanf("%s %s %d %d", nome, sobrenome, &altura, &peso);
-
         strcpy(arr[i].nome, nome);
         strcpy(arr[i].sobrenome, sobrenome);
         arr[i].alt = abs(180 - altura);
-        arr[i].pes = abs(75 - peso);
+        arr[i].pes = peso;
     }
-
     height(arr, n);
     weight(arr, n);
     surname(arr, n);
     name(arr, n);
-
     for (int i = 0; i < n; i++){
-        printf("%s, %s\n", arr[i].sobrenome, arr[i].nome);
+        printf("%s, %s", arr[i].sobrenome, arr[i].nome);
+        if (i != n-1) printf("\n");
     }
-
     return 0;
 }
