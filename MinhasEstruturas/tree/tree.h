@@ -10,9 +10,9 @@ typedef struct Node{
     struct Node *right;
     struct Node *left;
 } Node;
-
 Node* makeNode(int data);
 Node* insert(Node* no, int data);
 void dfp(Node* no);
-
+int height(Node* root);
+void printtree(Node* root);
 #endif

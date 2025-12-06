@@ -20,3 +20,23 @@ void dfp(Node* node){
     printf("%d ", node->data);
     dfp(node->right);
 }
+int height(Node* root){
+    if (!root) return 0;
+    int hl = height(root->left);
+    int hr = height(root->right);
+    if (hl > hr) return hl+1;
+    return hr+1;
+}
+void printtree(Node* root){
+    printf("(");
+    if (!root){
+        printf(")\n");
+        return;
+    }
+    printf("%d", root->data);
+    printf(" ");
+    printtree(root->left);
+    printf(" ");
+    printtree(root->right);
+    printf(")\n");
+}
