@@ -12,7 +12,12 @@ typedef struct Node{
 } Node;
 Node* makeNode(int data);
 Node* insert(Node* no, int data);
-void dfp(Node* no);
 int height(Node* root);
 void printtree(Node* root);
+void in(Node* root);
+void pre(Node* root);
+void pos(Node* root);\
+void remove();
+Node* dfs(Node* root, int val);
+Node* bfs(Node* root, int val);
 #endif

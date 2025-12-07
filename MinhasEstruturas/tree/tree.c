@@ -14,12 +14,6 @@ Node* insert(Node* node, int data){
     else if (node->data < data) node->right = insert(node->right, data);
     return node;
 }
-void dfp(Node* node){
-    if (node == NULL) return;
-    dfp(node->left);
-    printf("%d ", node->data);
-    dfp(node->right);
-}
 int height(Node* root){
     if (!root) return 0;
     int hl = height(root->left);
@@ -30,7 +24,7 @@ int height(Node* root){
 void printtree(Node* root){
     printf("(");
     if (!root){
-        printf(")\n");
+        printf(")");
         return;
     }
     printf("%d", root->data);
@@ -38,5 +32,28 @@ void printtree(Node* root){
     printtree(root->left);
     printf(" ");
     printtree(root->right);
-    printf(")\n");
+    printf(")");
+}
+void in(Node* node){
+    if (!node) return;
+    in(node->left);
+    printf("%d ", node->data);
+    in(node->right);
+}
+void pre(Node* node){
+    if (!node) return;
+    printf("%d", node->data); 
+    pre(node->left);
+    pre(node->right);
+}
+void pos(Node* node){
+    if (!node) return;
+    pos(node->left);
+    pos(node->right);
+    printf("%d ", node->data);
+}
+Node* dfs(Node* root, int val){
+    if(!root || root->data == val) return root;
+    if (root->data > val) return dfs(root->left, val);
+    return dfs(root->right, val);
 }
