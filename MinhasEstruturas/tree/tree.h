@@ -17,7 +17,8 @@ void printtree(Node* root);
 void in(Node* root);
 void pre(Node* root);
 void pos(Node* root);\
-void remove();
+Node* remove(Node* root, int val);
+Node* min(Node* root);
 Node* dfs(Node* root, int val);
 Node* bfs(Node* root, int val);
 #endif

@@ -57,3 +57,37 @@ Node* dfs(Node* root, int val){
     if (root->data > val) return dfs(root->left, val);
     return dfs(root->right, val);
 }
+Node* min(Node* root) {
+    if (!root) return NULL;
+    Node* atual = root;
+    while (atual->left) {
+        atual = atual->left;
+    }
+    return atual;
+}
+
+Node* remove(Node* root, int val){
+    if (!root) return NULL;
+    if (val < root->data) root->left = remove(root->left, val);
+    else if(val > root->data)root->right = remove(root->right, val);
+    else {
+        if (!root->left && !root->right){
+            free(root);
+            return NULL;
+        }
+        if (!root->left){
+            Node* temp = root->right;
+            free(root);
+            return temp;
+        }
+        if (!root->right){
+            Node* temp = root->left;
+            free(root);
+            return temp;
+        }
+        Node* next = min(root->right);
+        root->data = next->data;
+        root->right = remove(root->right, next->data);
+    }
+    return root;
+}
