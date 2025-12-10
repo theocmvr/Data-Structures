@@ -57,6 +57,21 @@ Node* dfs(Node* root, int val){
     if (root->data > val) return dfs(root->left, val);
     return dfs(root->right, val);
 }
+Node* bfs(Node* root, int val){
+    if (!root) return NULL;
+    Node* queue[1000];
+    int front = 0, rear = 0;
+    queue[rear++] = root;
+    while (front < rear) {
+        Node* curr = queue[front++];
+        if (curr->data == val) {
+            return curr;
+        }
+        if (curr->left)  queue[rear++] = curr->left;
+        if (curr->right) queue[rear++] = curr->right;
+    }
+    return NULL;
+}
 Node* min(Node* root) {
     if (!root) return NULL;
     Node* atual = root;

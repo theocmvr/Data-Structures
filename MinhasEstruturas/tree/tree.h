@@ -16,7 +16,7 @@ int height(Node* root);
 void printtree(Node* root);
 void in(Node* root);
 void pre(Node* root);
-void pos(Node* root);\
+void pos(Node* root);
 Node* remove(Node* root, int val);
 Node* min(Node* root);
 Node* dfs(Node* root, int val);
